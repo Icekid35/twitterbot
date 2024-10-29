@@ -15,12 +15,6 @@ const cookiesFilePath =  path.join(__dirname, "cookies");;
 let browser = null;
 let accounts = [];
 let jobs = [];
-
-// Set up storage for multer to save images to '/images' folder
-const storage = multer.diskStorage({
-  destination: async (req, file, cb) => {
-    const imagesFolder = path.join(__dirname, "images");
-
     // Function to ensure folder exists
     async function ensureFolderExists(folderPath) {
       try {
@@ -31,6 +25,12 @@ const storage = multer.diskStorage({
         console.log("Folder created:", folderPath);
       }
     }
+
+// Set up storage for multer to save images to '/images' folder
+const storage = multer.diskStorage({
+  destination: async (req, file, cb) => {
+    const imagesFolder = path.join(__dirname, "images");
+
 
     // Call this function to check or create the folder
     await ensureFolderExists(imagesFolder);
@@ -291,8 +291,9 @@ try {
    console.log("error from opening new page"+error) 
   }
   try {
+await ensureFolderExists(cookiesFilePath);
       browser = await puppeteer.launch({
-        executablePath: chromiumPath,
+        //executablePath: chromiumPath,
         headless: true,
         args: ["--no-sandbox", "--disable-setuid-sandbox"],
       });
@@ -371,7 +372,7 @@ async function performLogin(page, username, password) {
         }),
       ]);
     } catch (err) {
-      await page.close();
+      
 
       return { sucess: false, err: "passcode not correct" };
     }
@@ -475,7 +476,7 @@ async function commentOnTweet(page, text = String, mediaUrl = null) {
         page.$eval('[data-testid="fileInput"]', (el) => el.click()),
       ]);
       await fileChooser.accept([path.join(__dirname, mediaUrl)]);
-      await new Promise((r) => setTimeout(r, 15000));
+      await new Promise((r) => setTimeout(r, 10000));
     }
 
     await page.waitForSelector('[data-testid="tweetButtonInline"]', {
