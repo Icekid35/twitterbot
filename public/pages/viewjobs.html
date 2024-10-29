@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>View Jobs</title>
+    <link rel="stylesheet" href="./viewjobs.css" />
+  </head>
+  <body>
+    <div class="jobs-container">
+      <h2>View Jobs</h2>
+
+      <!-- Active Job Section -->
+      <div id="activeJob" class="active-job" style="display: none">
+        <h3>Currently Processing</h3>
+        <p>
+          <strong>Link:</strong>
+          <a id="activeJobLink" href="#" target="_blank"></a>
+        </p>
+        <div class="job-counts">
+          <p>
+            <span>Likes:</span> <span id="activeLikes">0</span>
+            <span class="loading-dots"></span>
+          </p>
+          <p>
+            <span>Retweets:</span> <span id="activeRetweets">0</span>
+            <span class="loading-dots"></span>
+          </p>
+          <p>
+            <span>Bookmarks:</span> <span id="activeBookmarks">0</span>
+            <span class="loading-dots"></span>
+          </p>
+          <p>
+            <span>Comments:</span> <span id="activeComments">0</span>
+            <span class="loading-dots"></span>
+          </p>
+        </div>
+      </div>
+
+      <!-- Job History Section -->
+      <h3>Completed Job History</h3>
+      <div id="jobHistoryContainer" class="job-history">
+        <table id="jobHistoryTable">
+          <thead>
+            <tr>
+              <th>Link</th>
+              <th>Likes</th>
+              <th>Retweets</th>
+              <th>Bookmarks</th>
+              <th>Comments</th>
+            </tr>
+          </thead>
+          <tbody id="jobHistoryBody"></tbody>
+        </table>
+      </div>
+    </div>
+
+    <script src="./viewJobs.js"></script>
+  </body>
+</html>

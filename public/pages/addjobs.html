@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Add Job</title>
+    <link rel="stylesheet" href="addjob.css" />
+  </head>
+  <body>
+    <div class="job-container">
+      <h2>Add Job</h2>
+
+      <!-- Twitter Link Input -->
+      <label for="twitterLink">Twitter Link</label>
+      <input
+        type="url"
+        id="twitterLink"
+        placeholder="Enter Twitter link"
+        inputmode="url"
+        required
+      />
+
+      <!-- Number of Accounts Slider -->
+      <label for="accountSlider"
+        >Number of Accounts: <span id="accountCount">0</span></label
+      >
+
+      <!-- Action Checkboxes -->
+      <div class="checkbox-group">
+        <label><input type="checkbox" id="like" /> Like</label>
+        <label><input type="checkbox" id="retweet" /> Retweet</label>
+        <label><input type="checkbox" id="bookmark" /> Bookmark</label>
+        <label><input type="checkbox" id="comment" /> Comment</label>
+      </div>
+
+      <!-- Comment Fields (Dynamic) -->
+      <div id="commentFields"></div>
+
+      <!-- Submit Button -->
+      <button id="submitButton">Add Job</button>
+    </div>
+
+    <script src="addJob.js"></script>
+  </body>
+</html>
