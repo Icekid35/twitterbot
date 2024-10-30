@@ -293,8 +293,8 @@ try {
   try {
 await ensureFolderExists(cookiesFilePath);
       browser = await puppeteer.launch({
-        executablePath: chromiumPath,
-        headless: false,
+       // executablePath: chromiumPath,
+        headless: true,
         args: ["--no-sandbox", "--disable-setuid-sandbox"],
       });
     
