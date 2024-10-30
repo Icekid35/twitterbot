@@ -144,7 +144,6 @@ app.post("/api/addAccount", async (req, res) => {
     return res.status(400).json({ message: "Account already exists" });
   }
   const context = await browser.createBrowserContext();
-  await context.clearCookies();
 const page = await context.newPage();
 
   const goodlogin = await performLogin(page, username, password);
@@ -294,8 +293,8 @@ try {
   try {
 await ensureFolderExists(cookiesFilePath);
       browser = await puppeteer.launch({
-        //executablePath: chromiumPath,
-        headless: true,
+        executablePath: chromiumPath,
+        headless: false,
         args: ["--no-sandbox", "--disable-setuid-sandbox"],
       });
     
@@ -351,7 +350,7 @@ async function performLogin(page, username, password) {
         timeout: 10000,
       });
     } catch (err) {
-      await page.close();
+      // await page.close();
 
       return { sucess: false, err: "Username not correct" };
     }
@@ -379,7 +378,7 @@ async function performLogin(page, username, password) {
     }
 
     await saveCookies(page, username);
-    await page.close();
+    // await page.close();
     return { sucess: true };
   } catch (err) {
     console.log(err);
@@ -559,8 +558,7 @@ async function generatePage(
   retweet,
   comment
 ) {
-  const context = browser
- await context.clearCookies();
+  const context = browser.createBrowserContext()
 const page = await context.newPage();
   // Enable request interception
   await page.setRequestInterception(true);
