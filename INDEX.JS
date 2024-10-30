@@ -143,8 +143,9 @@ app.post("/api/addAccount", async (req, res) => {
   if (existingAccount) {
     return res.status(400).json({ message: "Account already exists" });
   }
-  const context = await browser.createIncognitoBrowserContext();
-  const page = await context.newPage();
+  const context = await browser.createBrowserContext();
+  await context.clearCookies();
+const page = await context.newPage();
 
   const goodlogin = await performLogin(page, username, password);
   context.close();
@@ -519,8 +520,9 @@ async function commentOnTweet(page, text = String, mediaUrl = null) {
 }
 
 async function testLink(adsLink) {
-  const context = await browser.createIncognitoBrowserContext();
-  const page = await context.newPage();
+  const context = await browser.createBrowserContext();
+ 
+const page = await context.newPage();
   // Enable request interception
   await page.setRequestInterception(true);
 
@@ -557,8 +559,9 @@ async function generatePage(
   retweet,
   comment
 ) {
-  const context = await browser.createIncognitoBrowserContext();
-  const page = await context.newPage();
+  const context = browser
+ await context.clearCookies();
+const page = await context.newPage();
   // Enable request interception
   await page.setRequestInterception(true);
 
@@ -603,11 +606,11 @@ async function generatePage(
     await new Promise((r) => setTimeout(r, 1000));
 
     page.close();
-    context.close();
+    //context.close();
     await saveState();
   } catch (error) {
     page.close();
-    context.close();
+    //context.close();
 
     console.log(error);
   }
