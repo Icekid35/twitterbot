@@ -15,10 +15,10 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-  "puppeteer-core": "^23.3.2",        // Latest LTS-compatible version as of 2024
-    "puppeteer-extra": "^4.1.0",        // Latest stable version
-    "puppeteer": "^23.3.2",             // Latest LTS-compatible version
-    "puppeteer-extra-plugin-stealth": "^2.11.2", // Latest compatible version
+  "puppeteer-core": "^23.3.2",      
+    "puppeteer-extra": "^4.1.0",  
+    "puppeteer": "^23.3.2",          
+    "puppeteer-extra-plugin-stealth": "^2.11.2",
     "express": "^4.21.1",
     "multer": "^1.4.5-lts.1",
     "open": "^10.1.0"
